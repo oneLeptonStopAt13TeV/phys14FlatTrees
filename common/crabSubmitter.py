@@ -22,7 +22,7 @@ def gitCheckForUncommittedChanges(repoDir):
         sys.exit(-1)
 
 def gitCheckForTag(repoDir):
-    cmd = ['git', 'describe', '--exact-match', 'HEAD']
+    cmd = ['git', 'describe', '--tags', '--exact-match', 'HEAD']
     p = subprocess.Popen(cmd, cwd=repoDir, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     p.wait()
     (out, err) = p.communicate()
@@ -53,29 +53,28 @@ def launchProduction(prodConfig, datasets, checkUncommitedChanges = True, checkT
     print " Submitting production named", prodConfig.name
     print " ====== "
 
-    dataset = datasets[0]
+    for dataset in datasets :
 
-    print " "
-    print " > Submitting task for dataset", dataset.name, "..."
-    print " "
+        print " "
+        print " > Submitting task for dataset", dataset.name, "..."
+        print " "
 
-    # Write config file using template
-    with open("./crabConfig.py","w") as f :
+        # Write config file using template
+        with open("./crabConfig.py","w") as f :
 
-        f.write('datasetName="'+dataset.name+'"\n')
-        f.write('datasetPath="'+dataset.path+'"\n')
-        f.write('prodTag="'+prodConfig.name+'"\n')
-        
-        # Dump crab config template
-        with open("common/crabConfigTemplate.py","r") as template :
-            for line in template :
-                f.write(line)
-        
-        f.close()
+            f.write('datasetName="'+dataset.name+'"\n')
+            f.write('datasetPath="'+dataset.path+'"\n')
+            f.write('prodTag="'+prodConfig.name+'"\n')
+            
+            # Dump crab config template
+            with open("common/crabConfigTemplate.py","r") as template :
+                for line in template :
+                    f.write(line)
+            
+            f.close()
 
-    # Submit task
-    cmd = ['crab', 'submit']
-    p = subprocess.Popen(cmd)
-    p.wait()
-
+        # Submit task
+        cmd = ['crab', 'submit']
+        p = subprocess.Popen(cmd)
+        p.wait()
 

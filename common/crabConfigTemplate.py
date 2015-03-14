@@ -34,7 +34,7 @@ config.JobType.outputFiles  = ['FlatTree.root']
 config.section_('Data')
 # =====================
 
-config.Data.totalUnits      = 10
+config.Data.totalUnits      = 10000
 config.Data.unitsPerJob     = 2
 config.Data.splitting       = 'FileBased'
 
