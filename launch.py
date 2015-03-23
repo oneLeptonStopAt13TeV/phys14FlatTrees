@@ -9,7 +9,7 @@ Dataset = crabSubmitter.Dataset
 # Production config #
 #####################
 
-prod = Prod("v20150314-WildBeast")
+prod = Prod("v20150314-WildBeast-v2")
 
 ##################
 # Dataset config #
