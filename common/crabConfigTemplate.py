@@ -39,7 +39,7 @@ config.Data.unitsPerJob     = 2
 config.Data.splitting       = 'FileBased'
 
 config.Data.inputDataset    = datasetPath
-config.Data.outLFN          = outputPath
+config.Data.outLFNDirBase   = outputPath
 
 config.Data.publication     = False
 config.Data.publishDataName = ''
