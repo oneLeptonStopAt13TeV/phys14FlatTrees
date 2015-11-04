@@ -9,8 +9,11 @@ import os
 rfcommand = "/usr/bin/rfdir "
 dpm_prefix = "/dpm/in2p3.fr/home/cms/phedex/store/user/"
 user = os.popen("echo $USER").read().rstrip('\n')
+#user = "kskovpen"
 # New value can be changed here
-dpm_main_dir = "FlatTrees/MantaRay-patch7-pfcand"
+#dpm_main_dir = "FlatTrees/MantaRay-patch7-pfcand"
+#dpm_main_dir = "FlatTree/MantaRay-patch8-v20151025"
+dpm_main_dir = "FlatTrees/test-ak10"
 
 
 # From a list of directory, create a new list containing all subdirectories
